@@ -10,11 +10,12 @@ Test_ArrayStack
     }
 
     // store values from standard input into a stack container
-    ArrayStack<String>
-    store() 
+    static ArrayStack<String> 
+    store(int capacity) 
     {
+        ArrayStack<String> stack = new ArrayStack<String>(capacity);
         Scanner scanner = new Scanner(System.in);
-        while (!StdIn.isEmpty())
+        while ( scanner.hasNext() )
         {
             String x = scanner.next();
             if (!x.equals("-")) { stack.lay(x); }
@@ -23,13 +24,13 @@ Test_ArrayStack
                 else { }
             }
         }
-        return s tack;
+        return stack;
     }
 
     public static void
     main(String args[])
-    {
-        ArrayStack<String> stack = store();
+    {   println("hello");
+        ArrayStack<String> stack = store(50);
         println(String.format("[%d] items left.", stack.size()));
     }
 }
