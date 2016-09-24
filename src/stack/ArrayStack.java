@@ -17,22 +17,23 @@
 public class
 ArrayStack<G>
 {   private G[] storage;
-    private int storage_size;
+    private int capacity;
     private int i_head; // index of the current head
 
     public
-    ArrayStack(int capacity)
-    {   storage= (G[]) new Object[capacity]; }
+    ArrayStack(int user_defined_capacity)
+    {   capacity = user_defined_capacity;
+        storage= (G[]) new Object[capacity]; }
 
     public boolean
-    vacant() { return storage_size == 0; }
+    vacant() { return i_head < 0; }
 
     public int
-    size() { return storage_size; }
+    size() { return i_head + 1; }
 
     public void
-    lay(G x) 
-    {   if ( i_head < (storage_size - 1) ) 
+    add(G x) 
+    {   if ( i_head < (capacity - 1) ) 
         {   i_head = i_head + 1;
             storage[i_head] = x; 
         }
@@ -42,7 +43,7 @@ ArrayStack<G>
     public G
     pop() 
     {   G output = storage[i_head];
-        if (i_head > 0 ) { i_head = i_head - 1; }
+        if (i_head >= 0 ) { i_head = i_head - 1; }
         else { }
         return output;
     }

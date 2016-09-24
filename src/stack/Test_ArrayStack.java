@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 
 public class
 Test_ArrayStack
@@ -18,7 +20,7 @@ Test_ArrayStack
         while ( scanner.hasNext() )
         {
             String x = scanner.next();
-            if (!x.equals("-")) { stack.lay(x); }
+            if (!x.equals("-")) { stack.add(x); }
             else {
                 if ( !stack.vacant() ) { println(stack.pop() + " "); }
                 else { }
