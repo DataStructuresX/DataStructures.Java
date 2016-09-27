@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
+import java.io.InputStream;
 
 public class
 Test_ArrayStack
@@ -11,28 +12,27 @@ Test_ArrayStack
         System.out.println(s);
     }
 
-    // store values from standard input into a stack container
-    static ArrayStack<String> 
-    store(int capacity) 
-    {
-        ArrayStack<String> stack = new ArrayStack<String>(capacity);
+    public static void
+    main(String args[])
+    {   println("hello");
+        int capacity = 50; // stack capacity
+        ArrayStack<String> stack = new ArrayStack<String>(capacity, "DO NOT USE THIS ITEM");
         Scanner scanner = new Scanner(System.in);
+        InputStream stream = new InputStream();
+        if ( !stream.available() )
+        {
+            println("WARNING: no input found!");
+            System.exit();
+        }
         while ( scanner.hasNext() )
         {
             String x = scanner.next();
-            if (!x.equals("-")) { stack.add(x); }
+            if (!x.equals("-")) { stack.push(x); }
             else {
                 if ( !stack.vacant() ) { println(stack.pop() + " "); }
                 else { }
             }
         }
-        return stack;
-    }
-
-    public static void
-    main(String args[])
-    {   println("hello");
-        ArrayStack<String> stack = store(50);
         println(String.format("[%d] items left.", stack.size()));
     }
 }
